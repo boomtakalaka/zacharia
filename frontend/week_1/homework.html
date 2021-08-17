@@ -6,159 +6,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML</title>
     <style>
-        table.sidetable{
+        /* table.sidetable{
             float: right; 
             clear: right;
+        } */
+        .page-layout {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .table-layout {
+            display: flex;
+            flex-direction: column;
         }
     </style>
 </head>
 <body>
     <h1>HTML</h1>
     <hr></hr>
-
-    <div>
-        <p>From Wikipedia, the free encyclopedia    </p>
-
-        <p>".htm" and ".html" redirect here. For other uses, see <a href="https://en.wikipedia.org/wiki/HTM">HTM.</a>
-        </p>
-        <p>For the use of HTML on Wikipedia, see <a href="https://en.wikipedia.org/wiki/Help:HTML_in_wikitext">Help:HTML in wikitext.</a>
-        </p>
-
-        <table class="sidetable">
-            <tbody>
-                <caption>
-                        HTML<br>
-                        (HyperText Markup Language)
-                </caption>
-                <tr>
-                    <td>
-                        <a href="https://en.wikipedia.org/wiki/File:HTML5_logo_and_wordmark.svg"><img alt="Html logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" width="120" height="120"></a>
-                        <div>The official logo of the latest version, <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a></div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <a href="https://en.wikipedia.org/wiki/Filename_extension">Filename extension</a>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><code>html</code></li>
-                            <li><code>htm</code></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Internet media type</th>
-                    <td>text/html</td>
-                </tr>
-                <tr>
-                    <th>Type code</th>
-                    <td>TEXT</td>
-                </tr>
-                <tr>
-                    <th>Uniform Type Identifier (UTI)</th>
-                    <td>public.html</td>
-                </tr>
-                <tr>
-                    <th>Developed by</th>
-                    <td>WHATWG</td>
-                </tr>
-                <tr>
-                    <th>Initial release</th>
-                    <td>1993; 28 years ago</td>
-                </tr>
-                <tr>
-                    <th>Latest release</th>
-                    <td>Living Standard (2021)</td>
-                </tr>
-                <tr>
-                    <th>Type of format</th>
-                    <td>Document file format</td>
-                </tr>
-                <tr>
-                    <th>Container for</th>
-                    <td>HTML elements</td>
-                </tr>
-                <tr>
-                    <th>Contained by</th>
-                    <td>Web browser</td>
-                </tr>
-                <tr>
-                    <th>Extended from</th>
-                    <td>SGML</td>
-                </tr>
-                <tr>
-                    <th>Extended to</th>
-                    <td>XHTML</td>
-                </tr>
-                <tr>
-                    <th>Open format?</th>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <th>Website</th>
-                    <td>html.spec.whatwg.org</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <table class="sidetable">
-            <tbody>
-                <tr>
-                    <th>HTML</th>
-                </tr>
-                <tr>
-                    <td>
-                        <ul style="margin:0;display:inline">
-                            <li >
-                                <a href="https://en.wikipedia.org/wiki/Dynamic_HTML">dynamic HTML</a>
-                                
-                            </li>
-                            <li>
-                                <a href="https://en.wikipedia.org/wiki/Dynamic_HTML">HTML</a>
-                                
-                            </li>
-                            <li>
-                                <a href="https://en.wikipedia.org/wiki/Dynamic_HTML">XTML</a>
-                                ::after
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Comparisons</th>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-
-
-
-
-
+    <div class="page-layout">
+        <article>
+            <p>From Wikipedia, the free encyclopedia    </p>
+    
+            <p>".htm" and ".html" redirect here. For other uses, see <a href="https://en.wikipedia.org/wiki/HTM">HTM.</a>
+            </p>
+            <p>For the use of HTML on Wikipedia, see <a href="https://en.wikipedia.org/wiki/Help:HTML_in_wikitext">Help:HTML in wikitext.</a>
+            </p>
+            <p>As you may or may not already know, HTML files are the backbone of the user-facing world wide web.
+                HTML is an extension of XML, which basically means that there are "nodes" or "elements" (i.e. each tag),
+                and those elements each can have their own "child" elements nested within them. In addition to children,
+                elements can have "attributes", which are additional data associated with the element.
+            </p>
+            <p>
+                A webpage consists of an HTML file, which encodes <em>what</em> the information displayed is. However in most cases HTML files are
+                not standalone - they are often embedded with CSS and JavaScript.
+        
+                We will cover these two in later sessions, but put simply CSS (Cascading Style Sheets) is for the visual aspect of the page, and gives
+                instructions on how things should <em>look</em>. JavaScript gives the page interactivity, and gives instructions on what the browser
+                should <em>do</em>. For example, if I want a webpage to change the background colour when I click on a button, this is only possible
+                through a combination of CSS and JavaScript, it's not possible with HTML alone.
+            </p>
+            <p>
+                Each HTML element type has <em>semantics</em>, which indicate to the browser (and often the user through styling) what the meaning
+                of the information within the tags are.
+        
+                Learning all the HTML elements takes time, and it's probably not worth rote learning for now. I think the best approach is to learn
+                them organically as you require them in your own projects.
+            </p>
+        </article>
+        <div class="table-layout">
+            <table class="sidetable">
+                <tbody>
+                    <caption>
+                            HTML<br>
+                            (HyperText Markup Language)
+                    </caption>
+                    <tr>
+                        <td>
+                            <a href="https://en.wikipedia.org/wiki/File:HTML5_logo_and_wordmark.svg"><img alt="Html logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" width="120" height="120"></a>
+                            <div>The official logo of the latest version, <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <a href="https://en.wikipedia.org/wiki/Filename_extension">Filename extension</a>
+                        </th>
+                        <td>
+                            <ul>
+                                <li><code>html</code></li>
+                                <li><code>htm</code></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Internet media type</th>
+                        <td>text/html</td>
+                    </tr>
+                    <tr>
+                        <th>Type code</th>
+                        <td>TEXT</td>
+                    </tr>
+                    <tr>
+                        <th>Uniform Type Identifier (UTI)</th>
+                        <td>public.html</td>
+                    </tr>
+                    <tr>
+                        <th>Developed by</th>
+                        <td>WHATWG</td>
+                    </tr>
+                    <tr>
+                        <th>Initial release</th>
+                        <td>1993; 28 years ago</td>
+                    </tr>
+                    <tr>
+                        <th>Latest release</th>
+                        <td>Living Standard (2021)</td>
+                    </tr>
+                    <tr>
+                        <th>Type of format</th>
+                        <td>Document file format</td>
+                    </tr>
+                    <tr>
+                        <th>Container for</th>
+                        <td>HTML elements</td>
+                    </tr>
+                    <tr>
+                        <th>Contained by</th>
+                        <td>Web browser</td>
+                    </tr>
+                    <tr>
+                        <th>Extended from</th>
+                        <td>SGML</td>
+                    </tr>
+                    <tr>
+                        <th>Extended to</th>
+                        <td>XHTML</td>
+                    </tr>
+                    <tr>
+                        <th>Open format?</th>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <th>Website</th>
+                        <td>html.spec.whatwg.org</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <table class="sidetable">
+                <tbody>
+                    <tr>
+                        <th>HTML</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul style="margin:0;display:inline">
+                                <li >
+                                    <a href="https://en.wikipedia.org/wiki/Dynamic_HTML">dynamic HTML</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="https://en.wikipedia.org/wiki/Dynamic_HTML">HTML</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="https://en.wikipedia.org/wiki/Dynamic_HTML">XTML</a>
+                                    ::after
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Comparisons</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <p>As you may or may not already know, HTML files are the backbone of the user-facing world wide web.
-        HTML is an extension of XML, which basically means that there are "nodes" or "elements" (i.e. each tag),
-        and those elements each can have their own "child" elements nested within them. In addition to children,
-        elements can have "attributes", which are additional data associated with the element.
-    </p>
-    <p>
-        A webpage consists of an HTML file, which encodes <em>what</em> the information displayed is. However in most cases HTML files are
-        not standalone - they are often embedded with CSS and JavaScript.
 
-        We will cover these two in later sessions, but put simply CSS (Cascading Style Sheets) is for the visual aspect of the page, and gives
-        instructions on how things should <em>look</em>. JavaScript gives the page interactivity, and gives instructions on what the browser
-        should <em>do</em>. For example, if I want a webpage to change the background colour when I click on a button, this is only possible
-        through a combination of CSS and JavaScript, it's not possible with HTML alone.
-    </p>
-    <p>
-        Each HTML element type has <em>semantics</em>, which indicate to the browser (and often the user through styling) what the meaning
-        of the information within the tags are.
 
-        Learning all the HTML elements takes time, and it's probably not worth rote learning for now. I think the best approach is to learn
-        them organically as you require them in your own projects.
-    </p>
+
 </body>
 </html>
