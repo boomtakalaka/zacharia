@@ -23,7 +23,9 @@
     <script>
         window.onload = () => {
             const heading = document.getElementById('heading');
-            heading.innerHTML = 'This is not HTML';
+            heading.addEventListener('click', (ev) => {
+                heading.innerHTML = 'This is not HTML';
+            })
         }
     </script>
 </head>
