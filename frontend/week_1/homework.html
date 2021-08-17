@@ -20,9 +20,15 @@
             grid-template-rows: auto auto;
         }
     </style>
+    <script>
+        window.onload = () => {
+            const heading = document.getElementById('heading');
+            heading.innerHTML = 'This is not HTML';
+        }
+    </script>
 </head>
 <body>
-    <h1>HTML</h1>
+    <h1 id="heading">HTML</h1>
     <hr></hr>
     <div class="page-layout">
         <article>
