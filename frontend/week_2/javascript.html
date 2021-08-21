@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+</head>
+
+<body>
+  <h1>JavaScript</h1>
+  <p>JavaScript is a dynamically typed, functional, objected oriented and imperative programming language. It was born out of making pages
+    interactive in the early days of the internet. Prior to JavaScript, pages only had rudimentary interactivity such as clicking on links 
+    redirecting the user. With modern JavaScript and browser APIs such as Canvas, WebGL and Web Audio, complex applications can be made
+    for the browser.
+  </p>
+  <h3>Browser application examples:</h3>
+  <ul>
+    <li>http://asciicker.com/x13/</li>
+    <li>https://windows96.net/</li>
+    <li>https://classic.minecraft.net/</li>
+  </ul>
+  <h2>JavaScript as a programming language</h2>
+  <p>
+    JavaScript is a C-like language, which is a family of languages based off C. Examples include C++, Java and C#. The syntax for JavaScript is largely
+    the same as the aforementioned languages, with curly braces for defining scope, dots for accessing object members and semicolon line endings.
+  </p>
+  <p>
+    Unlike its relative though, it is a dynamically typed language, which is often JIT compiled (not compiled upfront). This means you do not type any variables,
+    so the programmer must understand what the intended type for a variable is by looking at the code. Variables can be assigned to any type at any point.
+  </p>
+  <p>
+    JavaScript also has automatic lifetime control for objects in memory. In C/C++, every single piece of memory that is allocated on the heap must be managed manually - 
+    using malloc/free or new/delete. In JavaScript this is not necessary, nor possible. You don't have to worry too much about what this means, the only implication is 
+    that you can't delete things out of memory as the programmer. The browser will do this for you at some point.
+  </p>
+  <p>
+    JavaScript's object model is also different to its C-like cousins. JavaScript uses prototypes to implement OO, which is quite different to most programming languages.
+    Most programming languages use class based object orientation. The fact that JavaScript is dynamically typed, and that it uses prototypical inheritance means that
+    there are quirks to using OO in JavaScript compared to other languages. We can get into this later down the line.
+  </p>
+  <p>
+    JavaScript has functional programming language features. The first and foremost feature is the fact that functions are first class objects. This means that functions
+    can be assigned to variables like any other object, and also manipulated as objects.
+  </p>
+  <p>
+    An important concept in functional programming is the use of callbacks. This is simply a function that is passed to another function to be used at a later point. This
+    can be chained as deeply as the programmer wishes.
+  </p>
+  <p>
+    Functions are defined using the `function` keyword, or arrow functions. `function` functions can either be named or anonymous. Regular functions and arrow functions differ
+    mainly in how the `this` keyword is bound - arrow functions bind `this` lexically (looks at the surrounding scope) and `function` uses the calling context as `this`, which
+    basically means that for regular functions `this` can mean different things depending on where it is called, whereas arrow functions always have the same meaning for `this`
+  </p>
+  <h2>How JavaScript is included in a web page</h2>
+  <p>JavaScript is included in a HTML page in three ways:</p>
+  <ul>
+    <li>Directly written inside a script tag</li>
+    <li>A script tag with a `src` attribute pointing to a remote JS tag (most common)</li>
+    <li>Written in an attribute of an HTML element (e.g. on an `onclick` attribute)</li>
+  </ul>
+  <h2>Web API ('Web Page' JavaScript)</h2>
+  <p>There is a specific set of interfaces just for the browser. We've used `console`, `document` and `window` so far. They will be the most used interfaces for interfacing
+    with the web page or the browser.
+  </p>
+  <p>
+    Just like any API, you will learn this organically through searching the internet and from reading web code. 99% of the time you will be using the following:
+  </p>
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">document</a> (interface to the DOM)</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window">window</a> (interface to the browser window)</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/console">console</a> (interface for debugger)</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">Event API</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Promise">Promise API</a> (Asynchronous programming API)</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> (For asynchronous fetching of remote files)</li>
+  </ul>
+
+</body>
+
+</html>
