@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    <style>
+        /* table.sidetable{
+            float: right; 
+            clear: right;
+        } */
+        .page-layout {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        .table-layout {
+            display: grid;
+            grid-template-rows: auto auto;
+        }
+    </style>
+    <script>
+
+        const arr = [1, 'two', { three: null }, () => 'four']
+        console.log(arr)
+        //#1
+        console.log('#1')
+        for (let i = 0;i < arr.length;i++){
+            console.log(arr[i]);
+        }
+        //#2
+        console.log('#2')
+        for (let i = 0;i < arr.length;i++){
+            if (typeof arr[i] == 'number'){
+                console.log(arr[i] + ' this is a ' + typeof arr[i])
+            } else if (typeof arr[i] == 'string'){
+                console.log(arr[i] + ' this is a ' + typeof arr[i])
+            } else if (typeof arr[i] == 'object'){
+                console.log(arr[i] + ' this is an ' + typeof arr[i])
+            }else if (typeof arr[i] == 'function'){
+                console.log(arr[i] + ' this is a ' + typeof arr[i])
+            }            
+        }
+        //#3
+        console.log('#3')
+        for (i = 0;i < arr.length;i++){
+            var stringy = []
+
+            stringy += JSON.stringify(arr[i])
+
+            if (stringy.length = arr.length){
+                console.log(stringy)
+            }
+        }
+
+
+        window.onload = () => {
+            const heading = document.getElementById('heading');
+            heading.addEventListener('click', (ev) => {
+                heading.innerHTML = 'This is not Javascript';
+            })
+        }
+
+        
+    </script>
+</head>
+<body>
+    <h1 id="heading">Javascript</h1>
+    <hr></hr>
+
+
+
+
+</body>
+</html>
