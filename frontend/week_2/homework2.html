@@ -95,9 +95,9 @@
         function loopString (i){
             if (i < (arr.length)){
                 if (typeof arr[i] == 'object'){
-                    stringedList.push(JSON.stringify(arr[i]));
+                    stringy.push(JSON.stringify(arr[i]));
                 } else {
-                    stringedList.push(arr[i].toString());
+                    stringy.push(arr[i].toString());
                 }
                 i++;
                 loopString(i);
