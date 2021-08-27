@@ -57,37 +57,63 @@
 
         //#4
         console.log('#4.1')
-        arr.forEach(function(i){
-            console.log(i);
-        }) 
+        function loop (i){
+            if (i < (arr.length)){
+                console.log(arr[i]);
+                i++;
+                loop(i);
+            } else {
+                return;
+            }
+        }
+        loop(0);
+
         console.log('#4.2')
-        arr.forEach(function(i){
-            if (typeof i == 'number'){
-                console.log(i + ' this is a ' + typeof i)
-            } else if (typeof i == 'string'){
-                console.log(i + ' this is a ' + typeof i)
-            } else if (typeof i == 'object'){
-                console.log(i + ' this is an ' + typeof i)
-            }else if (typeof i == 'function'){
-                console.log(i + ' this is a ' + typeof i)
-            } 
-        }) 
+
+        function loopType (i){
+            if (i < (arr.length)){
+                if (typeof arr[i] == 'number'){
+                    console.log(arr[i] + ' this is a ' + typeof arr[i])
+                } else if (typeof arr[i] == 'string'){
+                    console.log(arr[i] + ' this is a ' + typeof arr[i])
+                } else if (typeof arr[i] == 'object'){
+                    console.log(arr[i] + ' this is an ' + typeof arr[i])
+                }else if (typeof arr[i] == 'function'){
+                    console.log(arr[i] + ' this is a ' + typeof arr[i])
+                }
+                i++;
+                loopType(i);
+            } else {
+                return;
+            }
+        }
+        loopType(0);
 
         console.log('#4.3')
         var stringy = []
 
-        arr.forEach(function(i){
-            if (typeof i == 'object'){
-                stringy.push(JSON.stringify(i));
+        function loopString (i){
+            if (i < (arr.length)){
+                if (typeof arr[i] == 'object'){
+                    stringedList.push(JSON.stringify(arr[i]));
+                } else {
+                    stringedList.push(arr[i].toString());
+                }
+                i++;
+                loopString(i);
             } else {
-                stringy.push(i.toString());
+                console.log(stringy);
+                return;
             }
-        })
-        console.log(stringy);
+        }
+        loopString(0);
 
 
+        //console.log(plus());
 
-        //#5
+
+        // #5
+        // console.log('#5')
 
         // function double (num) {
         //     return num * 2
