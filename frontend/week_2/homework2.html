@@ -55,6 +55,50 @@
         }
         console.log(stringedList);
 
+        //#4
+        console.log('#4.1')
+        arr.forEach(function(i){
+            console.log(i);
+        }) 
+        console.log('#4.2')
+        arr.forEach(function(i){
+            if (typeof i == 'number'){
+                console.log(i + ' this is a ' + typeof i)
+            } else if (typeof i == 'string'){
+                console.log(i + ' this is a ' + typeof i)
+            } else if (typeof i == 'object'){
+                console.log(i + ' this is an ' + typeof i)
+            }else if (typeof i == 'function'){
+                console.log(i + ' this is a ' + typeof i)
+            } 
+        }) 
+
+        console.log('#4.3')
+        var stringy = []
+
+        arr.forEach(function(i){
+            if (typeof i == 'object'){
+                stringy.push(JSON.stringify(i));
+            } else {
+                stringy.push(i.toString());
+            }
+        })
+        console.log(stringy);
+
+
+
+        //#5
+
+        // function double (num) {
+        //     return num * 2
+        // }
+
+        // function noname (double(2)) {
+        //     return
+        // }
+
+
+
 
         window.onload = () => {
             const heading = document.getElementById('heading');
