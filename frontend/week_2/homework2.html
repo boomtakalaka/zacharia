@@ -42,6 +42,14 @@
                 console.log(arr[i] + ' this is a ' + typeof arr[i])
             }            
         }
+
+        let result = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (typeof arr[i] == 'number'){
+                result.push(arr[i])
+            }
+        }
+
         //#3
         console.log('#3')
         var stringedList  = []
@@ -108,17 +116,48 @@
         }
         loopString(0);
 
+        // 4.1
+        arr.forEach((element) => {
+            console.log(element)
+        });
+
+        // 4.2
+        const numbers = arr.filter((element) => {
+            return typeof element === 'number';
+        });
+        console.log(numbers);
+
+        const strings = arr.filter((element) => {
+            return typeof element === 'string';
+        });
+        console.log(strings);
+
+        const objects = arr.filter((element) => {
+            return typeof element === 'object';
+        });
+        console.log(objects);
+
+        const functions = arr.filter((element) => {
+            return typeof element === 'function';
+        });
+        console.log(functions);
+
 
         // #5
-        // console.log('#5')
+        console.log('#5')
 
-        // function double (num) {
-        //     return num * 2
-        // }
+        function double (num) {
+            console.log(num * 2);
+        }
 
-        // function noname (double(2)) {
-        //     return
-        // }
+        function noname (callback) {
+            for (let i = 0; i < 10; i++) {
+                callback(i);
+            }
+        }
+
+        noname(double);
+        // noname((i) => { console.log(i); });
 
 
         //#6
@@ -137,15 +176,36 @@
 
         window.onload = () => {
             const heading = document.getElementById('heading');
-            heading.addEventListener('click', (ev) => {
-                heading.innerHTML = 'This is not Javascript';  
-            })
+
+            heading.addEventListener('click', function (ev) {
+                heading.innerHTML = 'This is not Javascript';
+            });
             
-            document.getElementsByClassName('page-layout').style.background = '#ffb6c1';
+            // #1 #2
+            document.getElementsByClassName('page-layout')[0].style.background = '#ffb6c1';
             document.getElementById('top-table').style.background = '#f3f3f3';
 
-           
+            // #3
+            const examples = document.getElementsByClassName('example');
+            for (let i = 0; i < examples.length; i++) {
+                const example = examples[i];
+                example.style.background = 'purple';
+            }
 
+            // # 5
+            const link = document.getElementById('link');
+            link.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                const paragraph = document.getElementById('paragraph');
+                paragraph.style.backgroundColor = 'grey';
+            });
+
+            // #6 basics
+            const list = document.getElementById('list');
+            const li = document.createElement('li')
+            li.innerText = 'hello world';
+            list.appendChild(li);
+            list.removeChild(li);
         }
 
         
@@ -158,11 +218,11 @@
         <article>
             <p>From Wikipedia, the free encyclopedia    </p>
     
-            <p>".htm" and ".html" redirect here. For other uses, see <a href="https://en.wikipedia.org/wiki/HTM">HTM.</a>
+            <p class="example">".htm" and ".html" redirect here. For other uses, see <a href="https://en.wikipedia.org/wiki/HTM">HTM.</a>
             </p>
-            <p>For the use of HTML on Wikipedia, see <a href="https://en.wikipedia.org/wiki/Help:HTML_in_wikitext">Help:HTML in wikitext.</a>
+            <p class="example">For the use of HTML on Wikipedia, see <a id="link" href="https://en.wikipedia.org/wiki/Help:HTML_in_wikitext">Help:HTML in wikitext.</a>
             </p>
-            <p>As you may or may not already know, HTML files are the backbone of the user-facing world wide web.
+            <p id="paragraph">As you may or may not already know, HTML files are the backbone of the user-facing world wide web.
                 HTML is an extension of XML, which basically means that there are "nodes" or "elements" (i.e. each tag),
                 and those elements each can have their own "child" elements nested within them. In addition to children,
                 elements can have "attributes", which are additional data associated with the element.
@@ -183,6 +243,7 @@
                 Learning all the HTML elements takes time, and it's probably not worth rote learning for now. I think the best approach is to learn
                 them organically as you require them in your own projects.
             </p>
+            <ul id="list"></ul>
         </article>
         <div class="table-layout" >
             <table class="sidetable" id="top-table">
