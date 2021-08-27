@@ -32,3 +32,4 @@ Create a page with any elements with your choosing
 6) Create an unordered list (`<ul>`) on click of an element. The list elements' content should come from an array in JavaScript
 7) Same as 6, but clicking on an element deletes it from the list
 8) Same as 7, but add an text input element and a button. When the button is pressed and there is text in the input element, add an element to the list with the text content of the input element.
+9) Create an unordered list with some text in each <li> element. Each element should have a data attribute (name it data-name) that has the reversed text of the text in the element. Clicking on each element will set another element's (any element of your liking) text to the value of that attribute
