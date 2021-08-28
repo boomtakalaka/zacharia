@@ -177,36 +177,66 @@
         window.onload = () => {
             const heading = document.getElementById('heading');
 
+            new_heading = 'This is not Javascript';
             heading.addEventListener('click', function (ev) {
-                heading.innerHTML = 'This is not Javascript';
+                old_heading = heading.innerHTML;
+                heading.innerHTML = new_heading;
+                new_heading  =  old_heading;
             });
             
             // #1 #2
-            document.getElementsByClassName('page-layout')[0].style.background = '#ffb6c1';
-            document.getElementById('top-table').style.background = '#f3f3f3';
-
-            // #3
-            const examples = document.getElementsByClassName('example');
-            for (let i = 0; i < examples.length; i++) {
-                const example = examples[i];
-                example.style.background = 'purple';
+            //document.getElementsByClassName('sidetable').style.background = '#ffb6c1';
+            
+            
+            class_elements = document.getElementsByClassName('sidetable');
+            for(i = 0;i < class_elements.length;i++){
+                element = class_elements[i];
+                element.style.background = '#ffb6c1';
             }
 
-            // # 5
-            const link = document.getElementById('link');
-            link.addEventListener('click', (ev) => {
-                ev.preventDefault();
-                const paragraph = document.getElementById('paragraph');
-                paragraph.style.backgroundColor = 'grey';
+            document.getElementById('top-table').style.background = '#f3f3f3';
+
+            const table_title = document.getElementById('table-title');
+
+            new_title = '<strong>' + table_title.innerHTML + '</strong>';
+            table_title.addEventListener('click', function (ev) {
+                previous_content = table_title.innerHTML;
+                table_title.innerHTML = new_title;
+                new_title = previous_content;
             });
 
-            // #6 basics
-            const list = document.getElementById('list');
-            const li = document.createElement('li')
-            li.innerText = 'hello world';
-            list.appendChild(li);
-            list.removeChild(li);
-        }
+
+            //#5 table cell background colour
+            const cell2a = document.getElementById('cell2a');
+
+            cell2a.addEventListener('click', function (ev) {
+                document.getElementById('cell2b').innerHTML.style.background = 'blue';
+            });
+
+
+
+        //     // #3
+        //     const examples = document.getElementsByClassName('example');
+        //     for (let i = 0; i < examples.length; i++) {
+        //         const example = examples[i];
+        //         example.style.background = 'purple';
+        //     }
+
+        //     // # 5
+        //     const link = document.getElementById('link');
+        //     link.addEventListener('click', (ev) => {
+        //         ev.preventDefault();
+        //         const paragraph = document.getElementById('paragraph');
+        //         paragraph.style.backgroundColor = 'grey';
+        //     });
+
+        //     // #6 basics
+        //     const list = document.getElementById('list');
+        //     const li = document.createElement('li')
+        //     li.innerText = 'hello world';
+        //     list.appendChild(li);
+        //     list.removeChild(li);
+         }
 
         
     </script>
@@ -227,7 +257,7 @@
                 and those elements each can have their own "child" elements nested within them. In addition to children,
                 elements can have "attributes", which are additional data associated with the element.
             </p>
-            <p>
+            <p id >
                 A webpage consists of an HTML file, which encodes <em>what</em> the information displayed is. However in most cases HTML files are
                 not standalone - they are often embedded with CSS and JavaScript.
         
@@ -248,7 +278,7 @@
         <div class="table-layout" >
             <table class="sidetable" id="top-table">
                 <tbody>
-                    <caption>
+                    <caption id="table-title">
                             HTML<br>
                             (HyperText Markup Language)
                     </caption>
@@ -270,8 +300,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Internet media type</th>
-                        <td>text/html</td>
+                        <th id="cell2a">Internet media type</th>
+                        <td id="cell2b">text/html</td>
                     </tr>
                     <tr>
                         <th>Type code</th>
