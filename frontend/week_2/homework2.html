@@ -210,8 +210,26 @@
             const cell2a = document.getElementById('cell2a');
 
             cell2a.addEventListener('click', function (ev) {
-                document.getElementById('cell2b').innerHTML.style.background = 'blue';
+                document.getElementById('cell2b').style.background = 'blue';
             });
+
+            //#6
+            const list1 = document.getElementById('list');
+            const num_list = ['one', 'two', 'three'];
+            const pop_list = document.getElementById('pop-list');
+            var li1 = document.createElement('li');
+
+            pop_list.addEventListener('click', function (ev) {
+                pop_list.style.background = 'blue';
+                console.log(num_list.length);
+                for (let i = 0;i < num_list.length;i++) {  
+                    var li1 = document.createElement('li');                  
+                    li1.innerText = num_list[i];
+                    list1.appendChild(li1);
+                }
+            });
+            
+
 
 
 
@@ -230,12 +248,12 @@
         //         paragraph.style.backgroundColor = 'grey';
         //     });
 
-        //     // #6 basics
-        //     const list = document.getElementById('list');
-        //     const li = document.createElement('li')
-        //     li.innerText = 'hello world';
-        //     list.appendChild(li);
-        //     list.removeChild(li);
+            // #6 basics
+            const list = document.getElementById('list');
+            const li = document.createElement('li')
+            li.innerText = 'hello world';
+            list.appendChild(li);
+            list.removeChild(li);
          }
 
         
@@ -266,12 +284,12 @@
                 should <em>do</em>. For example, if I want a webpage to change the background colour when I click on a button, this is only possible
                 through a combination of CSS and JavaScript, it's not possible with HTML alone.
             </p>
-            <p>
+            <p >
                 Each HTML element type has <em>semantics</em>, which indicate to the browser (and often the user through styling) what the meaning
                 of the information within the tags are.
         
                 Learning all the HTML elements takes time, and it's probably not worth rote learning for now. I think the best approach is to learn
-                them organically as you require them in your own projects.
+                them organically as you require them in your own <span id="pop-list" >projects</span>.
             </p>
             <ul id="list"></ul>
         </article>
