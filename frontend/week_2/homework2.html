@@ -218,16 +218,88 @@
             const num_list = ['one', 'two', 'three'];
             const pop_list = document.getElementById('pop-list');
             var li1 = document.createElement('li');
+            
 
             pop_list.addEventListener('click', function (ev) {
                 pop_list.style.background = 'blue';
                 console.log(num_list.length);
+
                 for (let i = 0;i < num_list.length;i++) {  
                     var li1 = document.createElement('li');                  
                     li1.innerText = num_list[i];
                     list1.appendChild(li1);
                 }
+                var li_items = list.querySelectorAll("li"); 
+
+                for(let i = 0;i < li_items.length;i++){
+                    li_items[i].onclick = function () {
+                        console.log(li_items[i]);
+                        list1.removeChild(li_items[i]);
+                    };
+                }
+
             });
+
+            //function  remove_list_item
+
+
+            //#7
+            var sub_button = document.getElementById('sub-button');
+            sub_button.addEventListener('click', add_list_item, false);
+
+            function add_list_item() {
+                var item_field = document.getElementById('item-field').value;
+
+                if (!!item_field) {
+                    var li_input = document.createElement('li');
+                    li_input.innerText = item_field;
+                    list1.appendChild(li_input);
+                } 
+            }
+
+            //#8
+
+            const ul_list = document.getElementById('ul-list');
+            //var li1 = document.createElement('li');
+            
+
+            var li_items = ul_list.querySelectorAll("li"); 
+            console.log(document.getElementById('second').getAttribute('data-name'));
+
+            for(let i = 0;i < li_items.length;i++){
+                console.log(li_items[i].id);
+                li_items[i].onclick = function () {
+                    if (li_items[i].id === 'first') {
+                        document.getElementById('second').innerText = document.getElementById('second').getAttribute('data-name');
+                    } else if (li_items[i].id === 'second') {
+                        document.getElementById('third').innerText = document.getElementById('third').getAttribute('data-name');
+                    } else {
+                        document.getElementById('first').innerText = document.getElementById('first').getAttribute('data-name');
+                    }
+                }
+            }
+
+
+            
+
+            
+
+            // document.addEventListener('click', function (event) {
+
+            // // If the clicked element doesn't have the right selector, bail
+            // if (event.target.matches('.example')) {
+            //     console.log(event.target);
+            // }
+            
+            
+
+            // // Don't follow the link
+            // event.preventDefault();
+
+            // // Log the clicked element in the console
+            // console.log(event.target);
+
+            // }, false);
             
 
 
@@ -252,6 +324,7 @@
             const list = document.getElementById('list');
             const li = document.createElement('li')
             li.innerText = 'hello world';
+            console.log(li);
             list.appendChild(li);
             list.removeChild(li);
          }
@@ -284,6 +357,11 @@
                 should <em>do</em>. For example, if I want a webpage to change the background colour when I click on a button, this is only possible
                 through a combination of CSS and JavaScript, it's not possible with HTML alone.
             </p>
+            <ul id="ul-list">
+                <li id="first" data-name="tsrif">first</li>
+                <li id="second" data-name="dnoces">second</li>
+                <li id="third" data-name="driht">third</li>
+            </ul>
             <p >
                 Each HTML element type has <em>semantics</em>, which indicate to the browser (and often the user through styling) what the meaning
                 of the information within the tags are.
@@ -291,6 +369,14 @@
                 Learning all the HTML elements takes time, and it's probably not worth rote learning for now. I think the best approach is to learn
                 them organically as you require them in your own <span id="pop-list" >projects</span>.
             </p>
+            <form>
+                <label id='list-item' for='item-field'>Add list item</label>
+                <input id='item-field' type='text'></input>
+                <div class='form-sub'>
+                    <button id='sub-button' type='button'>Add</button>
+                </div>
+            </form>
+            
             <ul id="list"></ul>
         </article>
         <div class="table-layout" >
