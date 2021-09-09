@@ -21,11 +21,11 @@
         }
     </style>
     <script>
-
         const arr = [1, 'two', { three: null }, () => 'four']
         console.log(arr)
         //#1
         console.log('#1')
+
         for (let i = 0;i < arr.length;i++){
             console.log(arr[i]);
         }
@@ -214,31 +214,35 @@
             });
 
             //#6
+
+            function addListItem (list, text) {
+                const li = document.createElement('li');                  
+                li.innerText = text;
+                list.appendChild(li);
+                li.onclick = function () {
+                    list.removeChild(li);
+                };
+            }
+
             const list1 = document.getElementById('list');
             const num_list = ['one', 'two', 'three'];
             const pop_list = document.getElementById('pop-list');
             var li1 = document.createElement('li');
-            
 
             pop_list.addEventListener('click', function (ev) {
                 pop_list.style.background = 'blue';
                 console.log(num_list.length);
 
-                for (let i = 0;i < num_list.length;i++) {  
-                    var li1 = document.createElement('li');                  
-                    li1.innerText = num_list[i];
-                    list1.appendChild(li1);
+                // for (let i = 0;i < num_list.length;i++) {  
+                //     addListItem(list1, num_list[i]);
+                // }
+                // num_list.forEach(text => addListItem(list1, text));
+                const new_list = [];
+                for (const text of num_list) {
+                    new_list.push(text.toUpperCase());
                 }
-                var li_items = list.querySelectorAll("li"); 
-
-                for(let i = 0;i < li_items.length;i++){
-                    li_items[i].onclick = function () {
-                        console.log(li_items[i]);
-                        list1.removeChild(li_items[i]);
-                    };
-                }
-
             });
+
 
             //function  remove_list_item
 
@@ -251,9 +255,7 @@
                 var item_field = document.getElementById('item-field').value;
 
                 if (!!item_field) {
-                    var li_input = document.createElement('li');
-                    li_input.innerText = item_field;
-                    list1.appendChild(li_input);
+                    addListItem(list1, item_field)
                 } 
             }
 
