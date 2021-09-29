@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    <style>
+        /* table.sidetable{
+            float: right; 
+            clear: right;
+        } */
+        .page-layout {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        .table-layout {
+            display: grid;
+            grid-template-rows: auto auto;
+        }
+
+        .post-layout {
+            background-color: orchid;
+        }
+
+        .edited-text {
+            font-style: italic;
+        }
+
+    </style>
+    <script>
+        const arr = [1, 'two', { three: null }, () => 'four']
+        console.log(arr)
+        //#1
+        console.log('#1')
+
+        for (let i = 0;i < arr.length;i++){
+            console.log(arr[i]);
+        }
+        //#2
+        console.log('#2')
+        for (let i = 0;i < arr.length;i++){
+            if (typeof arr[i] == 'number'){
+                console.log(arr[i] + ' this is a ' + typeof arr[i])
+            } else if (typeof arr[i] == 'string'){
+                console.log(arr[i] + ' this is a ' + typeof arr[i])
+            } else if (typeof arr[i] == 'object'){
+                console.log(arr[i] + ' this is an ' + typeof arr[i])
+            }else if (typeof arr[i] == 'function'){
+                console.log(arr[i] + ' this is a ' + typeof arr[i])
+            }            
+        }
+
+        let result = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (typeof arr[i] == 'number'){
+                result.push(arr[i])
+            }
+        }
+
+        //#3
+        console.log('#3')
+        var stringedList  = []
+
+        for (let i = 0;i < arr.length;i++){
+            if (typeof arr[i] == 'object'){
+                stringedList.push(JSON.stringify(arr[i]));
+            } else {
+                stringedList.push(arr[i].toString());
+            }            
+        }
+        console.log(stringedList);
+
+        //#4
+        console.log('#4.1')
+        function loop (i){
+            if (i < (arr.length)){
+                console.log(arr[i]);
+                i++;
+                loop(i);
+            } else {
+                return;
+            }
+        }
+        loop(0);
+
+        console.log('#4.2')
+
+        function loopType (i){
+            if (i < (arr.length)){
+                if (typeof arr[i] == 'number'){
+                    console.log(arr[i] + ' this is a ' + typeof arr[i])
+                } else if (typeof arr[i] == 'string'){
+                    console.log(arr[i] + ' this is a ' + typeof arr[i])
+                } else if (typeof arr[i] == 'object'){
+                    console.log(arr[i] + ' this is an ' + typeof arr[i])
+                }else if (typeof arr[i] == 'function'){
+                    console.log(arr[i] + ' this is a ' + typeof arr[i])
+                }
+                i++;
+                loopType(i);
+            } else {
+                return;
+            }
+        }
+        loopType(0);
+
+        console.log('#4.3')
+        var stringy = []
+
+        function loopString (i){
+            if (i < (arr.length)){
+                if (typeof arr[i] == 'object'){
+                    stringy.push(JSON.stringify(arr[i]));
+                } else {
+                    stringy.push(arr[i].toString());
+                }
+                i++;
+                loopString(i);
+            } else {
+                console.log(stringy);
+                return;
+            }
+        }
+        loopString(0);
+
+        // 4.1
+        arr.forEach((element) => {
+            console.log(element)
+        });
+
+        // 4.2
+        const numbers = arr.filter((element) => {
+            return typeof element === 'number';
+        });
+        console.log(numbers);
+
+        const strings = arr.filter((element) => {
+            return typeof element === 'string';
+        });
+        console.log(strings);
+
+        const objects = arr.filter((element) => {
+            return typeof element === 'object';
+        });
+        console.log(objects);
+
+        const functions = arr.filter((element) => {
+            return typeof element === 'function';
+        });
+        console.log(functions);
+
+
+        // #5
+        console.log('#5')
+
+        function double (num) {
+            console.log(num * 2);
+        }
+
+        function noname (callback) {
+            for (let i = 0; i < 10; i++) {
+                callback(i);
+            }
+        }
+
+        noname(double);
+        // noname((i) => { console.log(i); });
+
+
+        //#6
+
+        var myDog = {
+            name: 'spot',
+            breed: 'labrador',
+            action: 'bite',
+            age:  4
+        }
+
+        myDog['owner'] = 'Zacharia'
+        console.log(myDog.owner)
+
+        
+
+
+
+        window.onload = () => {
+            const heading = document.getElementById('heading');
+
+            new_heading = 'This is not Facebook';
+            heading.addEventListener('click', function (ev) {
+                old_heading = heading.innerHTML;
+                heading.innerHTML = new_heading;
+                new_heading  =  old_heading;
+            });
+
+            // function Post() {
+            // this.text = "";
+            // this.is_edited = false;
+            // };
+
+            const post = {
+                text: "",
+                is_edited: false,
+                post_arr_index: 0
+            };
+
+            let postObj1 = Object.create(post);
+            postObj1.text = "this is the object text";
+
+            let postObj2 = Object.create(post);
+            postObj2.text = "this is the object text number 2";
+
+            
+
+            // let postObj1 = new Post();
+            // postObj1.text = "this is the text";
+
+            // let postObj2 = new Post();
+            // postObj2.text = "this is the text number 2";
+            const stored_post_arr =  ["stored this is the object text", "stored this is the object text number 2"]
+            const post_arr =  []
+            const fakebook_board = document.getElementById('fakebook-board');
+            console.log(fakebook_board);
+            let post_button = document.getElementById('post-button');
+            post_button.addEventListener('click', create_postObj, false);
+            
+            stored_post_arr.forEach((post_text) => {
+                console.log(post_text);
+                create_obj_in_arr(post_text);
+                create_post(post_arr[post_arr.length - 1]);
+            });
+
+            function create_obj_in_arr(post_text) {
+                post_arr[post_arr.length] = Object.create(post);
+                post_arr[post_arr.length - 1].text = post_text;
+                post_arr[post_arr.length - 1].post_arr_index = post_arr.length - 1;
+
+            }
+
+
+            function create_postObj() {
+                console.log('arrived');
+                let post_field = document.getElementById('post-field').value;
+
+                if (!!post_field) {
+                    create_obj_in_arr(post_field);
+                    console.log('here is the opbect');
+                    console.log(post_arr[post_arr.length - 1]);
+                    create_post(post_arr[post_arr.length - 1]);
+                } 
+            }
+
+
+
+            function create_post(postObj) {
+                console.log(postObj);
+                console.log('creating the post');
+                let post_div = document.createElement('div');
+                let post_id_div = document.createElement('div');
+                let delete_button = document.createElement('button');
+                let edit_button = document.createElement('button');
+                let post_id = postObj.post_arr_index.toString();
+                //let post_Obj = postObj;
+
+                post_id_div.id = post_id;
+                post_id_div.appendChild(post_div);
+
+                edit_button.id = 'edit-post-button';
+                edit_button.type = 'button';
+                edit_button.innerHTML = 'Edit';
+                edit_button.onclick = function () {
+                    console.log('this is the Edit button ' + post_id );
+                    edit_post(postObj.text, postObj.post_arr_index);
+                    edit_button.disabled = true;
+                };
+
+                delete_button.id = 'delete-post-button';
+                delete_button.type = 'button';
+                delete_button.innerHTML = 'Delete';
+                delete_button.onclick = function () {
+                    console.log('this is the delete button ' + post_id );
+                    delete_post(post_id, postObj.post_arr_index);
+                };
+
+                post_div.className = 'post-layout';
+                post_div.id = 'inner-' + post_id;
+                console.log(document.getElementsByName(post_id));
+                console.log(post_div);
+                post_div.innerHTML = '<p>' + postObj.text + '</p>';
+                post_div.appendChild(edit_button);
+                post_div.appendChild(delete_button);
+                
+
+                fakebook_board.prepend(post_id_div);
+            }
+
+            function delete_post(post_id, post_arr_index) {
+                let post = document.getElementById(post_id);
+                post.remove();
+                post_arr.splice(post_arr_index, 1)
+                //TODO: update post_arr_index
+            }
+
+            function edit_post(text, post_index) {
+                let edit_form = document.createElement('form');
+                let edit_text_form = document.createElement('textarea');
+                let save_button = document.createElement('button');
+                let post_text = text;
+
+                edit_text_form.id = "edit-field";
+                edit_text_form.name = "edit-field";
+                edit_text_form.rows = 2;
+                edit_text_form.cols = 50;
+                edit_text_form.innerHTML = post_text;
+
+                save_button.id = 'save-post-button';
+                save_button.type = 'button';
+                save_button.innerHTML = 'Save';
+                save_button.onclick = function () {
+                    console.log('this is the Save button ' + post_index );
+                    update_post(post_index);
+
+                    let edit_button = document.querySelectorAll('div#inner-' + post_index + ' button#edit-post-button');
+                    console.log(edit_button)
+                    edit_button[0].disabled = false;
+                };
+
+                edit_form.appendChild(edit_text_form);
+                edit_form.appendChild(save_button);
+
+                let post = document.getElementById('inner-' + post_index);
+                post.prepend(edit_form);
+
+                let p = edit_form.nextSibling;
+                post.removeChild(p);
+
+
+                console.log(post);
+                console.log(edit_form);
+
+
+            }
+            
+            function update_post(post_index) {
+                let updated_post_field = document.getElementById('edit-field').value;
+                let post_id = post_index.toString();
+                let post_div = document.getElementById('inner-' + post_index);
+                let updated_text = document.createElement('p');
+                
+                //console.log(updated_post_field);
+
+                console.log(post_arr[post_index].text); // ISSUE: potential issue if the post_index doesn't match actual index
+                post_arr[post_index].is_edited = true; // ISSUE: potentially add if statment to check if it is actually editied
+                post_arr[post_index].text = updated_post_field;
+                console.log(post_arr[post_index].text);
+                console.log(post_arr[post_index].is_edited);
+
+                // for(let i = 0;i < post_arr.length;i++) {
+                //     if (i == post_index) {
+                //         console.log(post_arr[i].text);
+                //         post_arr[i].is_edited = true; // potentially add if statment to check if it is actually editied
+                //         post_arr[i].text = updated_post_field;
+                //         console.log(post_arr[i].text);
+                //         console.log(post_arr[i].is_edited);
+                //     }
+                // }
+                
+                let second_node = post_div.firstChild.nextSibling;
+                if (second_node.tagName == 'P') {
+
+                    updated_text.innerHTML = post_arr[post_index].text;
+                    post_div.prepend(updated_text);
+
+                    console.log(updated_text.nextSibling);
+                    let textarea = updated_text.nextSibling;
+                    console.log(textarea.tagName);
+                    
+                    post_div.removeChild(textarea);
+
+                } else {       
+
+                    let edited_p =  document.createElement('p');    
+                    edited_p.className = 'edited-text';
+                    edited_p.innerHTML = '*Edited';
+
+                    updated_text.innerHTML = post_arr[post_index].text;
+                    post_div.prepend(edited_p);
+                    post_div.prepend(updated_text);
+
+                    console.log(updated_text.nextSibling);
+                    let textarea = edited_p.nextSibling;
+                    console.log(textarea.tagName);
+                    
+                    post_div.removeChild(textarea);
+                    
+                }
+            }
+            
+            // #1 #2
+            //document.getElementsByClassName('sidetable').style.background = '#ffb6c1';
+            
+            
+            class_elements = document.getElementsByClassName('sidetable');
+            for(i = 0;i < class_elements.length;i++){
+                element = class_elements[i];
+                element.style.background = '#ffb6c1';
+            }
+
+            document.getElementById('top-table').style.background = '#f3f3f3';
+
+            const table_title = document.getElementById('table-title');
+
+            new_title = '<strong>' + table_title.innerHTML + '</strong>';
+            table_title.addEventListener('click', function (ev) {
+                previous_content = table_title.innerHTML;
+                table_title.innerHTML = new_title;
+                new_title = previous_content;
+            });
+
+
+            //#5 table cell background colour
+            const cell2a = document.getElementById('cell2a');
+
+            cell2a.addEventListener('click', function (ev) {
+                document.getElementById('cell2b').style.background = 'blue';
+            });
+
+            //#6
+
+            function addListItem (list, text) {
+                const li = document.createElement('li');                  
+                li.innerText = text;
+                list.appendChild(li);
+                li.onclick = function () {
+                    list.removeChild(li);
+                };
+            }
+
+            const list1 = document.getElementById('list');
+            const num_list = ['one', 'two', 'three'];
+            const pop_list = document.getElementById('pop-list');
+            var li1 = document.createElement('li');
+
+            pop_list.addEventListener('click', function (ev) {
+                pop_list.style.background = 'blue';
+                console.log(num_list.length);
+
+                // for (let i = 0;i < num_list.length;i++) {  
+                //     addListItem(list1, num_list[i]);
+                // }
+                // num_list.forEach(text => addListItem(list1, text));
+                const new_list = [];
+                for (const text of num_list) {
+                    new_list.push(text.toUpperCase());
+                }
+            });
+
+
+            //function  remove_list_item
+
+
+            //#7
+            var sub_button = document.getElementById('sub-button');
+            sub_button.addEventListener('click', add_list_item, false);
+
+            function add_list_item() {
+                var item_field = document.getElementById('item-field').value;
+
+                if (!!item_field) {
+                    addListItem(list1, item_field)
+                } 
+            }
+
+            //#8
+
+            const ul_list = document.getElementById('ul-list');
+            //var li1 = document.createElement('li');
+            
+
+            var li_items = ul_list.querySelectorAll("li"); 
+            console.log(document.getElementById('second').getAttribute('data-name'));
+
+            for(let i = 0;i < li_items.length;i++){
+                console.log(li_items[i].id);
+                li_items[i].onclick = function () {
+                    if (li_items[i].id === 'first') {
+                        document.getElementById('second').innerText = document.getElementById('second').getAttribute('data-name');
+                    } else if (li_items[i].id === 'second') {
+                        document.getElementById('third').innerText = document.getElementById('third').getAttribute('data-name');
+                    } else {
+                        document.getElementById('first').innerText = document.getElementById('first').getAttribute('data-name');
+                    }
+                }
+            }
+
+
+            
+
+            
+
+            // document.addEventListener('click', function (event) {
+
+            // // If the clicked element doesn't have the right selector, bail
+            // if (event.target.matches('.example')) {
+            //     console.log(event.target);
+            // }
+            
+            
+
+            // // Don't follow the link
+            // event.preventDefault();
+
+            // // Log the clicked element in the console
+            // console.log(event.target);
+
+            // }, false);
+            
+
+
+
+
+        //     // #3
+        //     const examples = document.getElementsByClassName('example');
+        //     for (let i = 0; i < examples.length; i++) {
+        //         const example = examples[i];
+        //         example.style.background = 'purple';
+        //     }
+
+        //     // # 5
+        //     const link = document.getElementById('link');
+        //     link.addEventListener('click', (ev) => {
+        //         ev.preventDefault();
+        //         const paragraph = document.getElementById('paragraph');
+        //         paragraph.style.backgroundColor = 'grey';
+        //     });
+
+            // #6 basics
+            const list = document.getElementById('list');
+            const li = document.createElement('li')
+            li.innerText = 'hello world';
+            console.log(li);
+            list.appendChild(li);
+            list.removeChild(li);
+         }
+
+        
+    </script>
+</head>
+<body>
+    <h1 id="heading">Fakebook</h1>
+    <hr></hr>
+    <div class="page-layout">
+        <article>
+            <p>Post something</p>
+
+            <form>
+                <!-- <label id='list-item' for='post-field'>Post</label> -->
+                <textarea id="post-field" name="post-field" rows="4" cols="50"></textarea>
+                <div class='form-sub'>
+                    <button id='post-button' type='button'>Post</button>
+                </div>
+            </form>
+
+            <div id="fakebook-board">
+                <div id="first">
+                    <div class="post-layout" id="first1">
+                        <p>pre-written post</p>
+                        <p class="edited-text">(Edited)</p>
+                        <form>
+                            <textarea id="edit-field" name="edit-field" rows="2" cols="50">pre-written post</textarea>
+                            <button id='save-button' type='button'>Save</button>
+                        </form>
+                        <button id='delete-post-button' type='button'>Delete</button>
+                        <button id='edit-post-button' type='button'>Edit</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+    
+            <p class="example">".htm" and ".html" redirect here. For other uses, see <a href="https://en.wikipedia.org/wiki/HTM">HTM.</a>
+            </p>
+            <p class="example">For the use of HTML on Wikipedia, see <a id="link" href="https://en.wikipedia.org/wiki/Help:HTML_in_wikitext">Help:HTML in wikitext.</a>
+            </p>
+            <p id="paragraph">As you may or may not already know, HTML files are the backbone of the user-facing world wide web.
+                HTML is an extension of XML, which basically means that there are "nodes" or "elements" (i.e. each tag),
+                and those elements each can have their own "child" elements nested within them. In addition to children,
+                elements can have "attributes", which are additional data associated with the element.
+            </p>
+            <p id >
+                A webpage consists of an HTML file, which encodes <em>what</em> the information displayed is. However in most cases HTML files are
+                not standalone - they are often embedded with CSS and JavaScript.
+        
+                We will cover these two in later sessions, but put simply CSS (Cascading Style Sheets) is for the visual aspect of the page, and gives
+                instructions on how things should <em>look</em>. JavaScript gives the page interactivity, and gives instructions on what the browser
+                should <em>do</em>. For example, if I want a webpage to change the background colour when I click on a button, this is only possible
+                through a combination of CSS and JavaScript, it's not possible with HTML alone.
+            </p>
+            <ul id="ul-list">
+                <li id="first" data-name="tsrif">first</li>
+                <li id="second" data-name="dnoces">second</li>
+                <li id="third" data-name="driht">third</li>
+            </ul>
+            <p >
+                Each HTML element type has <em>semantics</em>, which indicate to the browser (and often the user through styling) what the meaning
+                of the information within the tags are.
+        
+                Learning all the HTML elements takes time, and it's probably not worth rote learning for now. I think the best approach is to learn
+                them organically as you require them in your own <span id="pop-list" >projects</span>.
+            </p>
+            <form>
+                <label id='list-item' for='item-field'>Add list item</label>
+                <input id='item-field' type='text'></input>
+                <div class='form-sub'>
+                    <button id='sub-button' type='button'>Add</button>
+                </div>
+            </form>
+            
+            <ul id="list"></ul>
+        </article>
+        
+        <div class="table-layout" >
+            <table class="sidetable" id="top-table">
+                <tbody>
+                    <caption id="table-title">
+                            HTML<br>
+                            (HyperText Markup Language)
+                    </caption>
+                    <tr>
+                        <td>
+                            <a href="https://en.wikipedia.org/wiki/File:HTML5_logo_and_wordmark.svg"><img alt="Html logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" width="120" height="120"></a>
+                            <div>The official logo of the latest version, <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <a href="https://en.wikipedia.org/wiki/Filename_extension">Filename extension</a>
+                        </th>
+                        <td>
+                            <ul>
+                                <li><code>html</code></li>
+                                <li><code>htm</code></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th id="cell2a">Internet media type</th>
+                        <td id="cell2b">text/html</td>
+                    </tr>
+                    <tr>
+                        <th>Type code</th>
+                        <td>TEXT</td>
+                    </tr>
+                    <tr>
+                        <th>Uniform Type Identifier (UTI)</th>
+                        <td>public.html</td>
+                    </tr>
+                    <tr>
+                        <th>Developed by</th>
+                        <td>WHATWG</td>
+                    </tr>
+                    <tr>
+                        <th>Initial release</th>
+                        <td>1993; 28 years ago</td>
+                    </tr>
+                    <tr>
+                        <th>Latest release</th>
+                        <td>Living Standard (2021)</td>
+                    </tr>
+                    <tr>
+                        <th>Type of format</th>
+                        <td>Document file format</td>
+                    </tr>
+                    <tr>
+                        <th>Container for</th>
+                        <td>HTML elements</td>
+                    </tr>
+                    <tr>
+                        <th>Contained by</th>
+                        <td>Web browser</td>
+                    </tr>
+                    <tr>
+                        <th>Extended from</th>
+                        <td>SGML</td>
+                    </tr>
+                    <tr>
+                        <th>Extended to</th>
+                        <td>XHTML</td>
+                    </tr>
+                    <tr>
+                        <th>Open format?</th>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <th>Website</th>
+                        <td>html.spec.whatwg.org</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <table class="sidetable">
+                <tbody>
+                    <tr>
+                        <th>HTML</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul style="margin:0;display:inline">
+                                <li >
+                                    <a href="https://en.wikipedia.org/wiki/Dynamic_HTML">dynamic HTML</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="https://en.wikipedia.org/wiki/Dynamic_HTML">HTML</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="https://en.wikipedia.org/wiki/Dynamic_HTML">XTML</a>
+                                    ::after
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Comparisons</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
