@@ -264,8 +264,8 @@
                 let post_index = postObj.post_arr_index;
 
                 master_post_div = create_master_post_div(post_index);
-                inner_post_div =  create_inner_post_div(postObj.text, post_index);
-                edit_button = create_edit_button(postObj.text, post_index)
+                inner_post_div =  create_inner_post_div(post_index);
+                edit_button = create_edit_button(post_index);
                 delete_button = create_delete_button(post_index);
 
                 inner_post_div.appendChild(edit_button);
@@ -284,7 +284,7 @@
                 return master_post_div;
             }
 
-            function create_edit_button(text, post_index) {
+            function create_edit_button(post_index) {
 
                 let edit_button = document.createElement('button');
 
@@ -293,7 +293,7 @@
                 edit_button.innerHTML = 'Edit';
                 edit_button.onclick = function () {
                     console.log('this is the Edit button ' + post_index );
-                    edit_post(text, post_index);
+                    edit_post(post_index);
                     edit_button.disabled = true;
                 };
 
@@ -320,11 +320,11 @@
                 let post = document.getElementById(post_index);
 
                 post.remove();
-                post_arr.splice(post_index, 1)
+                post_arr.splice(post_index, 1);
                 //TODO: update postObj.post_arr_index (post_index)
             }
 
-            function create_inner_post_div(text, post_index) {
+            function create_inner_post_div(post_index) {
 
                 let inner_post_div = document.createElement('div');
 
@@ -332,15 +332,16 @@
                 inner_post_div.id = 'inner-' + post_index;
                 console.log(document.getElementsByName(post_index));
                 console.log(inner_post_div);
-                inner_post_div.innerHTML = '<p>' + text + '</p>';
+                
+                inner_post_div.innerHTML = '<p>' + post_arr[post_index].text + '</p>';
 
                 return inner_post_div;
             }
 
-            function edit_post(text, post_index) {
+            function edit_post(post_index) {
 
                 let edit_form = document.createElement('form');
-                let post_text = text;
+                let post_text = post_arr[post_index].text;
 
                 edit_text_form = create_edit_text_form(post_text);
                 save_button = create_save_button(post_index);
@@ -393,28 +394,14 @@
                 let edited_text_post_field = document.getElementById('edit-field').value;
                 let inner_post_div = document.getElementById('inner-' + post_index);
                 let updated_text = document.createElement('p');
-                
-                //console.log(edited_text_post_field);
 
-                console.log(post_arr[post_index].text); // ISSUE: potential issue if the post_index doesn't match actual index
-                                                        // ISSUE: potentially add if statment to check if it is actually editied
+                // TODO: potentially add if statment to check if it is actually edited
 
                 post_arr[post_index].text = edited_text_post_field; // Updates object text field
 
                 updated_text.innerHTML = post_arr[post_index].text;
 
-                console.log(post_arr[post_index].text);
-                console.log(post_arr[post_index].is_edited);
-
-                // for(let i = 0;i < post_arr.length;i++) {
-                //     if (i == post_index) {
-                //         console.log(post_arr[i].text);
-                //         post_arr[i].is_edited = true; // potentially add if statment to check if it is actually editied
-                //         post_arr[i].text = edited_text_post_field;
-                //         console.log(post_arr[i].text);
-                //         console.log(post_arr[i].is_edited);
-                //     }
-                // }
+                remove_form(post_index);
 
                 if (post_arr[post_index].is_edited == false) {
 
@@ -424,28 +411,18 @@
                     
                     inner_post_div.prepend(updated_text);
 
-                    remove_textarea(edited_p, post_index);  
-
                 } else {
 
                     inner_post_div.prepend(updated_text);
 
-                    remove_textarea(updated_text, post_index);  
-
                 }
-
-                
             }
 
-            function remove_textarea(former_node, post_index) {
+            function remove_form(post_index) {
 
-                // let form = document.querySelectorAll('div#inner-' + post_index + ' form');
-                // console.log("this is the form")
-                // console.log(form);
+                let form = document.querySelectorAll('div#inner-' + post_index + ' form');
 
-                let textarea = former_node.nextSibling;
-                    
-                inner_post_div.removeChild(textarea);
+                form[0].remove();
 
             }
 
